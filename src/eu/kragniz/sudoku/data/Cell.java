@@ -5,5 +5,5 @@ package eu.kragniz.sudoku.data;
  * Licensed under GPLv3 or later
  */
 
-public class SextupleLinkedList {
+public class Cell {
 }
