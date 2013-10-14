@@ -6,4 +6,13 @@ package eu.kragniz.sudoku.data;
  */
 
 public class Cell {
+    private int digit;
+
+    public void setDigit(int digit) {
+        this.digit = digit;
+    }
+
+    public int getDigit() {
+        return digit;
+    }
 }
