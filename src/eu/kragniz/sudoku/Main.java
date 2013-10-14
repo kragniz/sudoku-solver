@@ -15,6 +15,9 @@ public class Main {
                     previous cell
      */
 
+    // TODO build plugin system
+    // each solver type in its own class
+
     public static void main(String[] args) {
         System.out.println("hello there");
         SudokuFile file = new SudokuFile("data/book55.sud");
