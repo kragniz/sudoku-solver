@@ -8,6 +8,10 @@ package eu.kragniz.sudoku.data;
 public class Cell {
     private int digit;
 
+    public Cell(int initialValue) {
+        digit = initialValue;
+    }
+
     public void setDigit(int digit) {
         this.digit = digit;
     }

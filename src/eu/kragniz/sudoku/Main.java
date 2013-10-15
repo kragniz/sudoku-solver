@@ -1,5 +1,7 @@
 package eu.kragniz.sudoku;
 
+import eu.kragniz.sudoku.data.factory.SudokuFactory;
+import eu.kragniz.sudoku.data.Sudoku;
 import eu.kragniz.sudoku.io.SudokuFile;
 
 import java.io.IOException;
@@ -17,6 +19,7 @@ public class Main {
 
     // TODO build plugin system
     // each solver type in its own class
+    // build some sort of regex for sudoku puzzles
 
     public static void main(String[] args) {
         System.out.println("hello there");
@@ -24,6 +27,7 @@ public class Main {
         try {
             file.read();
             System.out.print(file.toString());
+            Sudoku s = SudokuFactory.getSudoku(file.getArray());
         } catch (IOException e) {
             System.out.println("file not found");
             e.printStackTrace();

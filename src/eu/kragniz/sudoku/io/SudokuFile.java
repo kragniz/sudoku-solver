@@ -20,7 +20,7 @@ public class SudokuFile {
     }
 
     public int[][] getArray() {
-        return null;
+        return grid;
     }
 
     public void read() throws IOException {
@@ -33,7 +33,6 @@ public class SudokuFile {
         //TODO listen to http://www.youtube.com/watch?v=-uCUgiop1GQ&list=PL1712EC828784E00F
         while (((code = reader.read()) != -1) && x <= 9 && y <= 9) {
             char symbol = (char) code;
-            System.out.println(symbol);
             if (symbol == '\n') {
                 y = y + 1;
                 x = 0;
@@ -52,16 +51,19 @@ public class SudokuFile {
 
     public String toString() {
         StringBuffer buf = new StringBuffer();
+        buf.append("\n-------------------------\n");
         for (int i = 0; i < SUDOKU_SIZE; i++) {
+            buf.append("| ");
             for (int j = 0; j < SUDOKU_SIZE; j++) {
                 buf.append(grid[j][i]);
+                buf.append(" ");
                 if (((j+1) % 3) == 0) {
-                    buf.append('|');
+                    buf.append("| ");
                 }
             }
 
             if (((i+1) % 3) == 0) {
-                buf.append("\n-----------\n");
+                buf.append("\n-------------------------\n");
             } else {
             buf.append('\n');
             }

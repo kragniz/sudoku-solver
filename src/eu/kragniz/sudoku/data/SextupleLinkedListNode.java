@@ -5,7 +5,7 @@ package eu.kragniz.sudoku.data;
  * Licensed under GPLv3 or later
  */
 
-public static class SextupleLinkedList<T> {
+class SextupleLinkedListNode<T> {
     private T left;
     private T right;
     private T up;
@@ -14,29 +14,28 @@ public static class SextupleLinkedList<T> {
     private T backward;
 
     public void setLeft(T item) {
-        this.left = item
+        this.left = item;
     }
 
     public void setRight(T item) {
-        this.right = item
+        this.right = item;
     }
 
     public void setUp(T item) {
-        this.up = item
+        this.up = item;
     }
 
     public void setDown(T item) {
-        this.down = item
+        this.down = item;
     }
 
     public void setForward(T item) {
-        this.forward = item
+        this.forward = item;
     }
 
     public void setBackward(T item) {
-        this.backward = item
+        this.backward = item;
     }
-
 
     public T getLeft() {
         return this.left;
