@@ -22,12 +22,11 @@ public class Main {
     // build some sort of regex for sudoku puzzles
 
     public static void main(String[] args) {
-        System.out.println("hello there");
         SudokuFile file = new SudokuFile("data/book55.sud");
         try {
             file.read();
-            System.out.print(file.toString());
             Sudoku s = SudokuFactory.getSudoku(file.getArray());
+            System.out.print(s.toString());
         } catch (IOException e) {
             System.out.println("file not found");
             e.printStackTrace();

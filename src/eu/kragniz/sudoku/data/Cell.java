@@ -1,5 +1,7 @@
 package eu.kragniz.sudoku.data;
 
+import java.util.Set;
+
 /**
  * Copyright 2013 Louis Taylor <kragniz@gmail.com>
  * Licensed under GPLv3 or later
@@ -7,6 +9,7 @@ package eu.kragniz.sudoku.data;
 
 public class Cell {
     private int digit;
+    private Set<Integer> possible;
 
     public Cell(int initialValue) {
         digit = initialValue;
@@ -18,5 +21,9 @@ public class Cell {
 
     public int getDigit() {
         return digit;
+    }
+
+    public void addPossibleValue(int value) {
+        possible.add(value);
     }
 }
