@@ -1,6 +1,8 @@
 package eu.kragniz.sudoku.data;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,5 +37,13 @@ public class Cell {
 
     public void removePossibleValue(int value) {
         possible.remove(value);
+    }
+
+    public static HashSet cellArrayToIntSet(List<Cell> list) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (Cell cell: list) {
+            set.add(cell.getDigit());
+        }
+        return set;
     }
 }
