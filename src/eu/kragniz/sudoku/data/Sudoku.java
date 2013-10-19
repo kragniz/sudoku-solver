@@ -1,8 +1,7 @@
 package eu.kragniz.sudoku.data;
 
-import eu.kragniz.sudoku.data.Cell;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -26,13 +25,29 @@ public class Sudoku {
         grid[x][y] = cell;
     }
 
-    // TODO the same for columns
     public List<Cell> getRow(int y) {
         List<Cell> row = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {
             row.add(grid[i][y]);
         }
         return row;
+    }
+
+
+    public List<Cell> getColumn(int x) {
+        List<Cell> column = new ArrayList<Cell>();
+        for (int i = 0; i < 9; i++) {
+            column.add(grid[x][i]);
+        }
+        return column;
+    }
+
+    public HashSet getRowSet(int y) {
+        return Cell.cellArrayToIntSet(getRow(y));
+    }
+
+    public HashSet getColumnSet(int x) {
+        return Cell.cellArrayToIntSet(getColumn(x));
     }
 
     public String toString() {
