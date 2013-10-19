@@ -1,5 +1,6 @@
 package eu.kragniz.sudoku.data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -13,6 +14,15 @@ public class Cell {
 
     public Cell(int initialValue) {
         digit = initialValue;
+        possible = new HashSet<Integer>();
+
+        for (int i=1; i<=9; i++) {
+            possible.add(i);
+        }
+    }
+
+    public Cell() {
+        this(0);
     }
 
     public void setDigit(int digit) {
@@ -23,7 +33,7 @@ public class Cell {
         return digit;
     }
 
-    public void addPossibleValue(int value) {
-        possible.add(value);
+    public void removePossibleValue(int value) {
+        possible.remove(value);
     }
 }

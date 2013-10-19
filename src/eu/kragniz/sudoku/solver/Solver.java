@@ -8,12 +8,12 @@ import eu.kragniz.sudoku.data.Sudoku;
  */
 
 public abstract class Solver {
-    private Sudoku sudoku;
+    Sudoku sudoku;
 
     abstract boolean activatable();
     abstract Sudoku solve();
 
-    Solver(Sudoku sudoku) {
+    public Solver(Sudoku sudoku) {
         this.sudoku = sudoku;
     }
 }

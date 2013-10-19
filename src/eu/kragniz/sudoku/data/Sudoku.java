@@ -10,6 +10,7 @@ import java.util.List;
  * Licensed under GPLv3 or later
  */
 
+//TODO return a set for each row, column and section
 public class Sudoku {
     private Cell[][] grid;
 
@@ -25,6 +26,7 @@ public class Sudoku {
         grid[x][y] = cell;
     }
 
+    // TODO the same for columns
     public List<Cell> getRow(int y) {
         List<Cell> row = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {

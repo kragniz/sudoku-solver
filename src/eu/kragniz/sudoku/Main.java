@@ -3,20 +3,11 @@ package eu.kragniz.sudoku;
 import eu.kragniz.sudoku.data.factory.SudokuFactory;
 import eu.kragniz.sudoku.data.Sudoku;
 import eu.kragniz.sudoku.io.SudokuFile;
+import eu.kragniz.sudoku.solver.Preprocessor;
 
 import java.io.IOException;
 
 public class Main {
-
-    /* sextuple-linked list
-                   previous column
-        previous row [cell] next row
-                    next column
-
-                    next cell
-                    previous cell
-     */
-
     // TODO build plugin system
     // each solver type in its own class
     // build some sort of regex for sudoku puzzles
@@ -27,6 +18,8 @@ public class Main {
             file.read();
             Sudoku s = SudokuFactory.getSudoku(file.getArray());
             System.out.print(s.toString());
+            Preprocessor p = new Preprocessor(s);
+            s = p.solve();
         } catch (IOException e) {
             System.out.println("file not found");
             e.printStackTrace();

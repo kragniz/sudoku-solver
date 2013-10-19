@@ -30,7 +30,6 @@ public class SudokuFile {
         InputStream in = new FileInputStream(filename);
         Reader reader = new InputStreamReader(in, Charset.defaultCharset());
         int code;
-        //TODO listen to http://www.youtube.com/watch?v=-uCUgiop1GQ&list=PL1712EC828784E00F
         while (((code = reader.read()) != -1) && x <= 9 && y <= 9) {
             char symbol = (char) code;
             if (symbol == '\n') {
