@@ -9,11 +9,20 @@ import eu.kragniz.sudoku.data.Sudoku;
 
 public abstract class SolverStrategy {
     Sudoku sudoku;
+    boolean active;
 
-    abstract boolean activatable();
-    abstract Sudoku solve();
+    abstract Sudoku run();
+
+    public boolean activatable() {
+        return active;
+    }
+
+    public void setActive() {
+        active = true;
+    }
 
     public SolverStrategy(Sudoku sudoku) {
         this.sudoku = sudoku;
+        this.active = true;
     }
 }
