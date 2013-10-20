@@ -40,7 +40,7 @@ public class SudokuFile {
                     if (symbol == ' ') {
                         grid[x][y] = 0;
                     } else {
-                        grid[x][y] = Integer.parseInt(symbol + ""); //TODO convert to int
+                        grid[x][y] = Integer.parseInt(symbol + "");
                     }
                     x = x + 1;
                 }
@@ -56,15 +56,15 @@ public class SudokuFile {
             for (int j = 0; j < SUDOKU_SIZE; j++) {
                 buf.append(grid[j][i]);
                 buf.append(" ");
-                if (((j+1) % 3) == 0) {
+                if (((j + 1) % 3) == 0) {
                     buf.append("| ");
                 }
             }
 
-            if (((i+1) % 3) == 0) {
+            if (((i + 1) % 3) == 0) {
                 buf.append("\n-------------------------\n");
             } else {
-            buf.append('\n');
+                buf.append('\n');
             }
         }
         return buf.toString();
