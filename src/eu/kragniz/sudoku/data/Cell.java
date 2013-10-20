@@ -30,20 +30,22 @@ public class Cell {
         return digit;
     }
 
-    public void removePossibleValue(int value) {
+    public boolean removePossibleValue(int value) {
         possible.remove(value);
-        updateDigit();
+        return updateDigit();
     }
 
-    public void removeAllPossibleValues(HashSet values) {
+    public boolean removeAllPossibleValues(HashSet values) {
         possible.removeAll(values);
-        updateDigit();
+        return updateDigit();
     }
 
-    public void updateDigit() {
+    public boolean updateDigit() {
         if (possible.size() == 1 && digit == 0) {
             digit = possible.iterator().next();
+            return true;
         }
+        return false;
     }
 
     public static HashSet cellArrayToIntSet(List<Cell> list) {
@@ -54,12 +56,14 @@ public class Cell {
         return set;
     }
 
-    public static void removeValues(List<Cell> cells, HashSet<Integer> values) {
+    public static boolean removeValues(List<Cell> cells, HashSet<Integer> values) {
+        boolean updated = false;
         for (int y = 0; y < cells.size(); y++) {
             for (Cell cell : cells) {
-                cell.removeAllPossibleValues(values);
+                updated = updated || cell.removeAllPossibleValues(values);
             }
         }
+        return updated;
     }
 
     public String toString() {
