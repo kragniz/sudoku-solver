@@ -7,13 +7,13 @@ import eu.kragniz.sudoku.data.Sudoku;
  * Licensed under GPLv3 or later
  */
 
-public abstract class Solver {
+public abstract class SolverStrategy {
     Sudoku sudoku;
 
     abstract boolean activatable();
     abstract Sudoku solve();
 
-    public Solver(Sudoku sudoku) {
+    public SolverStrategy(Sudoku sudoku) {
         this.sudoku = sudoku;
     }
 }

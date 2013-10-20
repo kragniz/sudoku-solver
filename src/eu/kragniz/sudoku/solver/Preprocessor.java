@@ -8,7 +8,7 @@ import eu.kragniz.sudoku.data.Sudoku;
  * Licensed under GPLv3 or later
  */
 
-public class Preprocessor extends Solver {
+public class Preprocessor extends SolverStrategy {
 
     public Preprocessor(Sudoku sudoku) {
         super(sudoku);
