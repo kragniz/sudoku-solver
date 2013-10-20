@@ -16,12 +16,13 @@ public class Preprocessor extends SolverStrategy {
 
     public Sudoku run() {
         active = false;
-        for (int y = 0; y < 9; y++) {
-            active = active || Cell.removeValues(sudoku.getRow(y), sudoku.getRowSet(y));
-        }
 
         for (int x = 0; x < 9; x++) {
             active = active || Cell.removeValues(sudoku.getColumn(x), sudoku.getColumnSet(x));
+        }
+
+        for (int y = 0; y < 9; y++) {
+            active = active || Cell.removeValues(sudoku.getRow(y), sudoku.getRowSet(y));
         }
 
         for (int n = 0; n < 9; n++) {
