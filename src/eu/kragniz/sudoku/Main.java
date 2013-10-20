@@ -3,6 +3,7 @@ package eu.kragniz.sudoku;
 import eu.kragniz.sudoku.data.Sudoku;
 import eu.kragniz.sudoku.data.factory.SudokuFactory;
 import eu.kragniz.sudoku.io.SudokuFile;
+import eu.kragniz.sudoku.solver.HiddenSingles;
 import eu.kragniz.sudoku.solver.Preprocessor;
 
 import java.io.IOException;
@@ -20,9 +21,12 @@ public class Main {
             System.out.print(s.toString());
 
             Preprocessor p = new Preprocessor(s);
-            while (p.activatable()) {
+            //while (p.activatable()) {
                 p.run();
-            }
+            //}
+
+            HiddenSingles h = new HiddenSingles(s);
+            h.run();
 
             System.out.print(s.toString());
         } catch (IOException e) {

@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Cell {
     private int digit;
-    private Set<Integer> possible;
+    private HashSet<Integer> possible;
 
     public Cell(int initialValue) {
         digit = initialValue;
@@ -40,6 +40,18 @@ public class Cell {
         return updateDigit();
     }
 
+    public boolean setPossibleValue(int value) {
+        if (possible.contains(value)) {
+            possible.clear();
+            possible.add(value);
+        }
+        return updateDigit();
+    }
+
+    public HashSet<Integer> getPossibleValues() {
+        return possible;
+    }
+
     public boolean updateDigit() {
         if (possible.size() == 1 && digit == 0) {
             digit = possible.iterator().next();
@@ -48,7 +60,7 @@ public class Cell {
         return false;
     }
 
-    public static HashSet cellArrayToIntSet(List<Cell> list) {
+    public static HashSet<Integer> cellArrayToIntSet(List<Cell> list) {
         HashSet<Integer> set = new HashSet<Integer>();
         for (Cell cell : list) {
             set.add(cell.getDigit());
