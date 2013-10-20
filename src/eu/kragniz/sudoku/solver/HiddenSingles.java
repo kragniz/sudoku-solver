@@ -6,7 +6,6 @@ import eu.kragniz.sudoku.data.Sudoku;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Copyright 2013 Louis Taylor <kragniz@gmail.com>
@@ -36,8 +35,6 @@ public class HiddenSingles extends SolverStrategy {
 
                 if (diff.size() == 1) {
                     cells.get(i).setPossibleValue(diff.iterator().next());
-                    System.out.println("set a value!");
-                    System.out.println(cells.get(i));
                     valuesChanged = true;
                 }
             }
