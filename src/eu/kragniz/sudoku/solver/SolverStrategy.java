@@ -11,7 +11,7 @@ public abstract class SolverStrategy {
     Sudoku sudoku;
     boolean active;
 
-    abstract Sudoku run();
+    public abstract Sudoku run();
 
     public boolean activatable() {
         return active;
