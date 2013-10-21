@@ -55,30 +55,16 @@ public class Cell {
     }
 
     public boolean updateDigit() {
+        if (digit != 0) {
+            possible.clear();
+            possible.add(digit);
+        }
         if (possible.size() == 1 && digit == 0) {
             digit = possible.iterator().next();
             solved = true;
             return true;
         }
         return false;
-    }
-
-    public static HashSet<Integer> cellArrayToIntSet(List<Cell> list) {
-        HashSet<Integer> set = new HashSet<Integer>();
-        for (Cell cell : list) {
-            set.add(cell.getDigit());
-        }
-        return set;
-    }
-
-    public static boolean removeValues(List<Cell> cells, HashSet<Integer> values) {
-        boolean updated = false;
-        for (int y = 0; y < cells.size(); y++) {
-            for (Cell cell : cells) {
-                updated = updated || cell.removeAllPossibleValues(values);
-            }
-        }
-        return updated;
     }
 
     public boolean isSolved() {
@@ -99,5 +85,31 @@ public class Cell {
             buffer.append(String.valueOf(v));
         }
         return buffer.toString();
+    }
+
+    public static HashSet<Integer> cellArrayToIntSet(List<Cell> list) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (Cell cell : list) {
+            set.add(cell.getDigit());
+        }
+        return set;
+    }
+
+    public static HashSet<Integer> sumCellArrayPossibleValues(List<Cell> list) {
+        HashSet<Integer> set = new HashSet<Integer>();
+        for (Cell cell : list) {
+            set.addAll(cell.getPossibleValues());
+        }
+        return set;
+    }
+
+    public static boolean removeValues(List<Cell> cells, HashSet<Integer> values) {
+        boolean updated = false;
+        for (int y = 0; y < cells.size(); y++) {
+            for (Cell cell : cells) {
+                updated = updated || cell.removeAllPossibleValues(values);
+            }
+        }
+        return updated;
     }
 }
