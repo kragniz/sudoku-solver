@@ -16,6 +16,17 @@ public class Sudoku {
         grid = new Cell[9][9];
     }
 
+    public boolean solved() {
+        for(Cell[] columns: grid) {
+            for (Cell cell: columns) {
+                if (cell.getDigit() == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public Cell cell(int x, int y) {
         return grid[x][y];
     }
