@@ -25,13 +25,12 @@ public class HiddenSingles extends SolverStrategy {
                 ArrayList<Cell> otherCells = new ArrayList<Cell>(cells);
                 otherCells.remove(i);
 
-                HashSet<Integer> boxSet = Cell.cellArrayToIntSet(otherCells);
+                HashSet<Integer> arraySet = Cell.sumCellArrayPossibleValues(otherCells);
                 HashSet<Integer> cellSet = cells.get(i).getPossibleValues();
                 HashSet<Integer> diff = new HashSet<Integer>();
 
-                diff.addAll(boxSet);
                 diff.addAll(cellSet);
-                diff.removeAll(boxSet);
+                diff.removeAll(arraySet);
 
                 if (diff.size() == 1) {
                     cells.get(i).setPossibleValue(diff.iterator().next());
