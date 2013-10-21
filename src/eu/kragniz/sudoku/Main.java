@@ -12,16 +12,15 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        SudokuFile file = new SudokuFile("data/guardian.sud");
+        SudokuFile file = new SudokuFile("data/book55.sud");
         try {
             file.read();
             Sudoku s = SudokuFactory.getSudoku(file.getArray());
-            System.out.print(s.toString());
 
-            SolverStrategy[] strategies = new SolverStrategy[2];
-            strategies[0] = new Preprocessor(s);
-            strategies[1] = new HiddenSingles(s);
-
+            SolverStrategy[] strategies = new SolverStrategy[] {
+                    new Preprocessor(s),
+                    new HiddenSingles(s)
+            };
 
             while (!s.solved()) {
                 for (SolverStrategy strategy: strategies) {
@@ -34,8 +33,6 @@ public class Main {
 
             SudokuFrame frame = new SudokuFrame(s);
             frame.setVisible(true);
-
-            System.out.print(s.toString());
         } catch (IOException e) {
             System.out.println("file not found");
             e.printStackTrace();
