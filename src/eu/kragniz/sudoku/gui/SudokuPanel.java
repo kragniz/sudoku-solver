@@ -47,14 +47,18 @@ public class SudokuPanel extends JPanel {
 
                 x = xoffset + (i * cellSize);
                 y = yoffset + (j * cellSize);
-                g.setColor(Color.BLACK);
+
+                if (cell.isSolved()) {
+                    g.setColor(Color.LIGHT_GRAY);
+                    g.fillRect(x, y, cellSize, cellSize);
+                }
+
+                g.setColor(Color.GRAY);
                 g.drawRect(x, y, cellSize, cellSize);
+                g.setColor(Color.BLACK);
                 g.setFont(smallFont);
                 g.drawString(cell.possibleValueString(), x + 5, y + cellSize - 2);
                 g.setFont(largeFont);
-                if (cell.isSolved()) {
-                    g.setColor(Color.RED);
-                }
                 g.drawString(cell.toString(), x + (cellSize / 2) - largeFontSize / 3, y + (cellSize / 2) + largeFontSize / 3);
             }
         }
