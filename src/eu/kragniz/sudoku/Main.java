@@ -2,6 +2,7 @@ package eu.kragniz.sudoku;
 
 import eu.kragniz.sudoku.data.Sudoku;
 import eu.kragniz.sudoku.data.factory.SudokuFactory;
+import eu.kragniz.sudoku.gui.SudokuFrame;
 import eu.kragniz.sudoku.io.SudokuFile;
 import eu.kragniz.sudoku.solver.HiddenSingles;
 import eu.kragniz.sudoku.solver.Preprocessor;
@@ -9,24 +10,25 @@ import eu.kragniz.sudoku.solver.Preprocessor;
 import java.io.IOException;
 
 public class Main {
-    // TODO build plugin system
-    // each solver type in its own class
-    // build some sort of regex for sudoku puzzles
-
     public static void main(String[] args) {
-        SudokuFile file = new SudokuFile("data/simple349.sud");
+        SudokuFile file = new SudokuFile("data/book55.sud");
         try {
             file.read();
             Sudoku s = SudokuFactory.getSudoku(file.getArray());
             System.out.print(s.toString());
 
             Preprocessor p = new Preprocessor(s);
-            //while (p.activatable()) {
+            while (p.activatable()) {
                 p.run();
-            //}
+            }
 
             HiddenSingles h = new HiddenSingles(s);
-            h.run();
+            while (h.activatable()) {
+                h.run();
+            }
+
+            SudokuFrame frame = new SudokuFrame(s);
+            frame.setVisible(true);
 
             System.out.print(s.toString());
         } catch (IOException e) {

@@ -12,10 +12,12 @@ import java.util.Set;
 public class Cell {
     private int digit;
     private HashSet<Integer> possible;
+    private boolean solved;
 
     public Cell(int initialValue) {
         digit = initialValue;
         possible = new HashSet<Integer>();
+        solved = false;
 
         for (int i = 1; i <= 9; i++) {
             possible.add(i);
@@ -55,6 +57,7 @@ public class Cell {
     public boolean updateDigit() {
         if (possible.size() == 1 && digit == 0) {
             digit = possible.iterator().next();
+            solved = true;
             return true;
         }
         return false;
@@ -78,7 +81,23 @@ public class Cell {
         return updated;
     }
 
+    public boolean isSolved() {
+        return solved;
+    }
+
     public String toString() {
-        return String.valueOf(digit);
+        if (digit == 0) {
+            return " ";
+        } else {
+            return String.valueOf(digit);
+        }
+    }
+
+    public String possibleValueString() {
+        StringBuffer buffer = new StringBuffer();
+        for (Integer v : possible) {
+            buffer.append(String.valueOf(v));
+        }
+        return buffer.toString();
     }
 }

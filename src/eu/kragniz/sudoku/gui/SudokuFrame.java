@@ -15,8 +15,8 @@ public class SudokuFrame extends JFrame {
         super("Sudoku solver");
         SudokuPanel panel = new SudokuPanel(sudoku);
         setContentPane(panel);
-        panel.setVisible(true);
-        setSize(panel.WIDTH, panel.HEIGHT);
+        setSize(500, 500);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
