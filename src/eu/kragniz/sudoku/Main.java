@@ -6,25 +6,30 @@ import eu.kragniz.sudoku.gui.SudokuFrame;
 import eu.kragniz.sudoku.io.SudokuFile;
 import eu.kragniz.sudoku.solver.HiddenSingles;
 import eu.kragniz.sudoku.solver.Preprocessor;
+import eu.kragniz.sudoku.solver.SolverStrategy;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        SudokuFile file = new SudokuFile("data/book55.sud");
+        SudokuFile file = new SudokuFile("data/guardian.sud");
         try {
             file.read();
             Sudoku s = SudokuFactory.getSudoku(file.getArray());
             System.out.print(s.toString());
 
-            Preprocessor p = new Preprocessor(s);
-            while (p.activatable()) {
-                p.run();
-            }
+            SolverStrategy[] strategies = new SolverStrategy[2];
+            strategies[0] = new Preprocessor(s);
+            strategies[1] = new HiddenSingles(s);
 
-            HiddenSingles h = new HiddenSingles(s);
-            while (h.activatable()) {
-                h.run();
+
+            while (!s.solved()) {
+                for (SolverStrategy strategy: strategies) {
+                    while (strategy.activatable()) {
+                        strategy.run();
+                    }
+                    strategy.setActive();
+                }
             }
 
             SudokuFrame frame = new SudokuFrame(s);
