@@ -33,31 +33,30 @@ public class HiddenSingles extends SolverStrategy {
                 diff.removeAll(arraySet);
 
                 if (diff.size() == 1) {
-                    cells.get(i).setPossibleValue(diff.iterator().next());
-                    valuesChanged = true;
+                    if (cells.get(i).getDigit() == 0) {
+                        cells.get(i).setPossibleValue(diff.iterator().next());
+                        valuesChanged = true;
+                    }
                 }
             }
         }
         return valuesChanged;
     }
 
-    public Sudoku run() {
-        active = false;
-
+    public void update() {
         for (int x = 0; x < 9; x++) {
             List<Cell> column = sudoku.getColumn(x);
-            active = active || findCandidate(column);
+            findCandidate(column);
         }
 
         for (int y = 0; y < 9; y++) {
             List<Cell> row = sudoku.getRow(y);
-            active = active || findCandidate(row);
+            findCandidate(row);
         }
 
         for (int n = 0; n < 9; n++) {
             List<Cell> box = sudoku.getBox(n);
-            active = active || findCandidate(box);
+            findCandidate(box);
         }
-        return sudoku;
     }
 }

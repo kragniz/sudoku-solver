@@ -14,20 +14,17 @@ public class Preprocessor extends SolverStrategy {
         super(sudoku);
     }
 
-    public Sudoku run() {
-        active = false;
-
+    public void update() {
         for (int x = 0; x < 9; x++) {
-            active = active || Cell.removeValues(sudoku.getColumn(x), sudoku.getColumnSet(x));
+            Cell.removeValues(sudoku.getColumn(x), sudoku.getColumnSet(x));
         }
 
         for (int y = 0; y < 9; y++) {
-            active = active || Cell.removeValues(sudoku.getRow(y), sudoku.getRowSet(y));
+            Cell.removeValues(sudoku.getRow(y), sudoku.getRowSet(y));
         }
 
         for (int n = 0; n < 9; n++) {
-            active = active || Cell.removeValues(sudoku.getBox(n), sudoku.getBoxSet(n));
+            Cell.removeValues(sudoku.getBox(n), sudoku.getBoxSet(n));
         }
-        return sudoku;
     }
 }
