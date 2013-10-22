@@ -28,6 +28,9 @@ public class SudokuPanel extends JPanel {
 
     public void paint(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         int cellSize = cellSize();
         int xoffset = (getSize().width - cellSize * SUDOKU_SIZE) / 2;
