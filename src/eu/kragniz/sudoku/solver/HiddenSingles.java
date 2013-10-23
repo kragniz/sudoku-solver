@@ -43,20 +43,21 @@ public class HiddenSingles extends SolverStrategy {
         return valuesChanged;
     }
 
-    public void update() {
+    public void run() {
+        setInactive();
         for (int x = 0; x < 9; x++) {
             List<Cell> column = sudoku.getColumn(x);
-            findCandidate(column);
+            addActive(findCandidate(column));
         }
 
         for (int y = 0; y < 9; y++) {
             List<Cell> row = sudoku.getRow(y);
-            findCandidate(row);
+            addActive(findCandidate(row));
         }
 
         for (int n = 0; n < 9; n++) {
             List<Cell> box = sudoku.getBox(n);
-            findCandidate(box);
+            addActive(findCandidate(box));
         }
     }
 }

@@ -12,31 +12,34 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        SudokuFile file = new SudokuFile("data/book55.sud");
+        SudokuFile file = new SudokuFile("data/book69.sud");
         try {
             file.read();
-            Sudoku s = SudokuFactory.getSudoku(file.getArray());
+            Sudoku sudoku = SudokuFactory.getSudoku(file.getArray());
 
             SolverStrategy[] strategies = new SolverStrategy[] {
-                    new Preprocessor(s),
-                    new HiddenSingles(s)
+                    new Preprocessor(sudoku),
+                    new HiddenSingles(sudoku)
             };
 
-            while (!s.solved()) {
+            String lastSudoku = sudoku.toString();
+            boolean done = false;
+            while (!done) {
+                lastSudoku = sudoku.toString();
                 for (SolverStrategy strategy: strategies) {
                     while (strategy.activatable()) {
                         strategy.run();
                     }
                     strategy.setActive();
                 }
+                done = lastSudoku.equals(sudoku.toString());
             }
 
-            SudokuFrame frame = new SudokuFrame(s);
+            SudokuFrame frame = new SudokuFrame(sudoku);
             frame.setVisible(true);
         } catch (IOException e) {
             System.out.println("file not found");
             e.printStackTrace();
         }
-        System.out.println("end of program");
     }
 }

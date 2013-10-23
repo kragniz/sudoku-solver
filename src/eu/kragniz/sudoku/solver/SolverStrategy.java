@@ -11,13 +11,11 @@ public abstract class SolverStrategy {
     Sudoku sudoku;
     boolean active;
 
-    public abstract void update();
+    public abstract void run();
 
-    public void run() {
-        sudoku.resetUpdates();
-        update();
-        active = sudoku.isUpdated();
-    };
+    public void addActive(boolean value) {
+        active = active || value;
+    }
 
     public boolean activatable() {
         return active;
@@ -26,6 +24,10 @@ public abstract class SolverStrategy {
     public void setActive() {
         active = true;
     }
+
+   void setInactive() {
+       active = false;
+   }
 
     public SolverStrategy(Sudoku sudoku) {
         this.sudoku = sudoku;

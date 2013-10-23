@@ -17,8 +17,8 @@ public class Sudoku {
     }
 
     public boolean solved() {
-        for(Cell[] columns: grid) {
-            for (Cell cell: columns) {
+        for (Cell[] columns : grid) {
+            for (Cell cell : columns) {
                 if (cell.getDigit() == 0) {
                     return false;
                 }
@@ -83,23 +83,16 @@ public class Sudoku {
 
     public String toString() {
         StringBuffer buf = new StringBuffer();
-        buf.append("\n-------------------------\n");
         for (int i = 0; i < 9; i++) {
-            buf.append("| ");
             for (int j = 0; j < 9; j++) {
                 buf.append(grid[j][i].getDigit());
-                buf.append(" ");
-                if (((j + 1) % 3) == 0) {
-                    buf.append("| ");
-                }
             }
-
-            if (((i + 1) % 3) == 0) {
-                buf.append("\n-------------------------\n");
-            } else {
-                buf.append('\n');
-            }
+            buf.append('\n');
         }
         return buf.toString();
+    }
+
+    public boolean equals(Sudoku other) {
+        return this.toString().equals(other.toString());
     }
 }
