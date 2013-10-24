@@ -17,6 +17,7 @@ public class SudokuFactory {
                 sudoku.setCell(x, y, cell);
             }
         }
+        sudoku.populateGroups();
         return sudoku;
     }
 }
