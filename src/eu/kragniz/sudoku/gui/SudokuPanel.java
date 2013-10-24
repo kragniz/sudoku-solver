@@ -56,11 +56,15 @@ public class SudokuPanel extends JPanel {
                     g.fillRect(x, y, cellSize, cellSize);
                 }
 
+                if (cell.getDigit() == 0) {
+                    g.setFont(smallFont);
+                    g.drawString(cell.possibleValueString(), x + 5, y + cellSize - 2);
+                }
+
                 g.setColor(Color.GRAY);
                 g.drawRect(x, y, cellSize, cellSize);
+
                 g.setColor(Color.BLACK);
-                g.setFont(smallFont);
-                g.drawString(cell.possibleValueString(), x + 5, y + cellSize - 2);
                 g.setFont(largeFont);
                 g.drawString(cell.toString(), x + (cellSize / 2) - largeFontSize / 3, y + (cellSize / 2) + largeFontSize / 3);
             }
