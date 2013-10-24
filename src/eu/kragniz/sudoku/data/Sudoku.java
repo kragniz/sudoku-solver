@@ -12,8 +12,47 @@ import java.util.List;
 public class Sudoku {
     private Cell[][] grid;
 
+    private List<Cell>[] rows;
+    private List<Cell>[] columns;
+    private List<Cell>[] boxes;
+    private List<Cell>[] groups;
+
     public Sudoku() {
         grid = new Cell[9][9];
+    }
+
+    public void populateGroups() {
+        rows = new List[9];
+        for (int y = 0; y < 9; y++) {
+            rows[y] = getRow(y, true);
+        }
+
+        columns = new List[9];
+        for (int x = 0; x < 9; x++) {
+            columns[x] = getColumn(x, true);
+        }
+
+        boxes = new List[9];
+        for (int n = 0; n < 9; n++) {
+            boxes[n] = getBox(n, true);
+        }
+
+        groups = new List[27];
+        int i = 0;
+        for (List<Cell> group: rows) {
+            groups[i] = group;
+            i++;
+        }
+
+        for (List<Cell> group: columns) {
+            groups[i] = group;
+            i++;
+        }
+
+        for (List<Cell> group: boxes) {
+            groups[i] = group;
+            i++;
+        }
     }
 
     public boolean solved() {
@@ -35,7 +74,7 @@ public class Sudoku {
         grid[x][y] = cell;
     }
 
-    public List<Cell> getRow(int y) {
+    public List<Cell> getRow(int y, boolean cached) {
         List<Cell> row = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {
             row.add(grid[i][y]);
@@ -43,7 +82,11 @@ public class Sudoku {
         return row;
     }
 
-    public List<Cell> getColumn(int x) {
+    public List<Cell> getRow(int y) {
+        return rows[y];
+    }
+
+    public List<Cell> getColumn(int x, boolean cached) {
         List<Cell> column = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {
             column.add(grid[x][i]);
@@ -51,7 +94,11 @@ public class Sudoku {
         return column;
     }
 
-    public List<Cell> getBox(int x, int y) {
+    public List<Cell> getColumn(int x) {
+        return columns[x];
+    }
+
+    public List<Cell> getBox(int x, int y, boolean cached) {
         List<Cell> box = new ArrayList<Cell>();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -61,8 +108,16 @@ public class Sudoku {
         return box;
     }
 
+    public List<Cell> getBox(int x, int y) {
+        return boxes[x+(y*3)];
+    }
+
     public List<Cell> getBox(int n) {
         return getBox(n % 3, n / 3);
+    }
+
+    public List<Cell> getBox(int n, boolean cached) {
+        return getBox(n % 3, n / 3, cached);
     }
 
     public HashSet getRowSet(int y) {
@@ -79,6 +134,10 @@ public class Sudoku {
 
     public HashSet getBoxSet(int n) {
         return getBoxSet(n % 3, n / 3);
+    }
+
+    public List[] getGroups() {
+        return groups;
     }
 
     public String toString() {
