@@ -47,26 +47,4 @@ public class SudokuFile {
             }
         }
     }
-
-    public String toString() {
-        StringBuffer buf = new StringBuffer();
-        buf.append("\n-------------------------\n");
-        for (int i = 0; i < SUDOKU_SIZE; i++) {
-            buf.append("| ");
-            for (int j = 0; j < SUDOKU_SIZE; j++) {
-                buf.append(grid[j][i]);
-                buf.append(" ");
-                if (((j + 1) % 3) == 0) {
-                    buf.append("| ");
-                }
-            }
-
-            if (((i + 1) % 3) == 0) {
-                buf.append("\n-------------------------\n");
-            } else {
-                buf.append('\n');
-            }
-        }
-        return buf.toString();
-    }
 }
