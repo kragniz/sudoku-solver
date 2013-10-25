@@ -1,0 +1,26 @@
+Main solver
+===========
+
+while previous sudoku grid is not equal to present grid:
+    for each strategy:
+        while strategy has changed a cell value:
+            run the strategy
+
+Strategies
+==========
+
+NakedPairs
+==========
+
+for each group in the sudoku:
+    for each cell, C1, in the group:
+        if the number of possible values in C1 is 2:
+            for each cell, C2, in the group:
+                if the number of possible values is 2, and C1 is not equal to C2:
+                    if the possible values in C1 and C2 are the same:
+                        for each cell, C3, in the group:
+                            if C3 is not equal to either C1 or C2:
+                                remove all the possible values from C1 contains
+                                from C3
+
+Prepro
