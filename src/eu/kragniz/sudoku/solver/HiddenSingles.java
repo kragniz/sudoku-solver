@@ -21,7 +21,7 @@ public class HiddenSingles extends SolverStrategy {
     private boolean findCandidate(List<Cell> cells) {
         boolean valuesChanged = false;
         for (int i = 0; i < cells.size(); i++) {
-            if (cells.get(i).getDigit() == 0) {
+            if (!cells.get(i).hasValue()) {
                 ArrayList<Cell> otherCells = new ArrayList<Cell>(cells);
                 otherCells.remove(i);
 
@@ -33,7 +33,7 @@ public class HiddenSingles extends SolverStrategy {
                 diff.removeAll(arraySet);
 
                 if (diff.size() == 1) {
-                    if (cells.get(i).getDigit() == 0) {
+                    if (!cells.get(i).hasValue()) {
                         cells.get(i).setPossibleValue(diff.iterator().next());
                         valuesChanged = true;
                     }

@@ -11,7 +11,7 @@ public class SudokuSolver {
         SolverStrategy[] strategies = new SolverStrategy[]{
                 new Preprocessor(sudoku),
                 new HiddenSingles(sudoku),
-                new NakedPairs(sudoku),
+                new NakedPairs(sudoku)
         };
 
         String lastSudoku = sudoku.toString();

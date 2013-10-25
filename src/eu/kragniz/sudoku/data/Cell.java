@@ -71,6 +71,10 @@ public class Cell {
         return solved;
     }
 
+    public boolean hasValue() {
+        return (getDigit() != 0);
+    }
+
     public String toString() {
         if (digit == 0) {
             return " ";

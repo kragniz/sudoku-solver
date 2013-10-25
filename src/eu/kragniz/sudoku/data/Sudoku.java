@@ -41,17 +41,17 @@ public class Sudoku {
 
         groups = new List[27];
         int i = 0;
-        for (List<Cell> group: rows) {
+        for (List<Cell> group : rows) {
             groups[i] = group;
             i++;
         }
 
-        for (List<Cell> group: columns) {
+        for (List<Cell> group : columns) {
             groups[i] = group;
             i++;
         }
 
-        for (List<Cell> group: boxes) {
+        for (List<Cell> group : boxes) {
             groups[i] = group;
             i++;
         }
@@ -76,7 +76,7 @@ public class Sudoku {
         grid[x][y] = cell;
     }
 
-    public List<Cell> getRow(int y, boolean cached) {
+    private List<Cell> getRow(int y, boolean cached) {
         List<Cell> row = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {
             row.add(grid[i][y]);
@@ -88,7 +88,7 @@ public class Sudoku {
         return rows[y];
     }
 
-    public List<Cell> getColumn(int x, boolean cached) {
+    private List<Cell> getColumn(int x, boolean cached) {
         List<Cell> column = new ArrayList<Cell>();
         for (int i = 0; i < 9; i++) {
             column.add(grid[x][i]);
@@ -100,7 +100,7 @@ public class Sudoku {
         return columns[x];
     }
 
-    public List<Cell> getBox(int x, int y, boolean cached) {
+    private List<Cell> getBox(int x, int y, boolean cached) {
         List<Cell> box = new ArrayList<Cell>();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -111,11 +111,24 @@ public class Sudoku {
     }
 
     public List<Cell> getBox(int x, int y) {
-        return boxes[x+(y*3)];
+        return boxes[x + (y * 3)];
     }
 
     public List<Cell> getBox(int n) {
         return getBox(n % 3, n / 3);
+    }
+
+    public Cell[][] getBox2d(int x, int y) {
+        Cell[][] box2d = new Cell[3][3];
+        List<Cell> box = getBox(x, y);
+        int n = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                box2d[i][j] = box.get(n);
+                n++;
+            }
+        }
+        return box2d;
     }
 
     public List<Cell> getBox(int n, boolean cached) {

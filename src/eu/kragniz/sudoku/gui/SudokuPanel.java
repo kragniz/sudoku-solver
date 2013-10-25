@@ -53,7 +53,7 @@ public class SudokuPanel extends JPanel {
 
                 if (cell.isSolved()) {
                     g.setColor(Color.LIGHT_GRAY);
-                    g.fillRect(x, y, cellSize, cellSize);
+                    g.fillRect(x, y, cellSize+1, cellSize+1);
                 }
 
                 if (cell.getDigit() == 0) {
