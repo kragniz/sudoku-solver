@@ -7,10 +7,11 @@ import eu.kragniz.sudoku.data.Sudoku;
  * Licensed under GPLv3 or later
  */
 public class SudokuSolver {
-    public static Sudoku solve(Sudoku sudoku) {
+    public static boolean solve(Sudoku sudoku) {
         SolverStrategy[] strategies = new SolverStrategy[]{
                 new Preprocessor(sudoku),
-                new HiddenSingles(sudoku)
+                new HiddenSingles(sudoku),
+                new NakedPairs(sudoku),
         };
 
         String lastSudoku = sudoku.toString();
@@ -25,6 +26,6 @@ public class SudokuSolver {
             }
             done = lastSudoku.equals(sudoku.toString());
         }
-        return sudoku;
+        return sudoku.solved();
     }
 }
