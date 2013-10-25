@@ -31,13 +31,9 @@ public class SudokuTest {
     }
 
     @Test
-    public void testPopulateGroups() throws Exception {
+    public void testSolved() throws Exception {
+        Assert.assertFalse(sudoku.solved());
     }
-
-    @Test
-    public void testSolved({
-
-    }) throws Exception
 
     @Test
     public void testCell() throws Exception {

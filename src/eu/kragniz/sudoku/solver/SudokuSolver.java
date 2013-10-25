@@ -6,6 +6,7 @@ import eu.kragniz.sudoku.data.Sudoku;
  * Copyright 2013 Louis Taylor <kragniz@gmail.com>
  * Licensed under GPLv3 or later
  */
+
 public class SudokuSolver {
     public static boolean solve(Sudoku sudoku) {
         SolverStrategy[] strategies = new SolverStrategy[]{

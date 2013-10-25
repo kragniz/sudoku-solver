@@ -44,10 +44,10 @@ public class Main {
                     solved++;
                 } else {
                     System.out.print(" - failed\n");
-
-                    SudokuFrame frame = new SudokuFrame(sudoku);
-                    frame.setVisible(true);
                 }
+
+                SudokuFrame frame = new SudokuFrame(sudoku);
+                frame.setVisible(true);
 
             } catch (IOException e) {
                 System.out.println("file not found");

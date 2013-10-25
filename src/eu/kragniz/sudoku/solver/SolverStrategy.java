@@ -25,7 +25,7 @@ public abstract class SolverStrategy {
         active = true;
     }
 
-   void setInactive() {
+   public void setInactive() {
        active = false;
    }
 
