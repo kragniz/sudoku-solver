@@ -4,17 +4,19 @@ sudoku-solver
 A simple non-backtracking sudoku puzzle solver implementing basic human
 strategies.
 
+
 Input files are in the format:
 
-     6 1 4 5 
-      83 56  
-    2       1
-    8  4 7  6
-      6   3  
-    7  9 1  4
-    5       2
-      72 69  
-     4 5 8 7 
+    $ cat data/guardian.sud 
+       93    
+     72  49  
+    3      1 
+      42     
+    18     69
+         13  
+     4      1
+      16  79 
+        58   
 
 Running
 =======
