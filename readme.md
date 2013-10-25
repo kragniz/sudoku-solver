@@ -2,7 +2,7 @@ sudoku-solver
 =============
 
 A simple non-backtracking sudoku puzzle solver implementing basic human
-strategies.
+style solving strategies.
 
 
 Input files are in the format:
