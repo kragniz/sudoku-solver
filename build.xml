@@ -22,4 +22,6 @@
         <java jar="build/jar/sudoku-solver.jar" fork="true"/>
     </target>
 
+    <property name="build.sysclasspath" value="last"/>
+
 </project>
