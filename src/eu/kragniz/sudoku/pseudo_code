@@ -6,6 +6,7 @@ while previous sudoku grid is not equal to present grid:
         while strategy has changed a cell value:
             run the strategy
 
+
 Strategies
 ==========
 
@@ -23,4 +24,35 @@ for each group in the sudoku:
                                 remove all the possible values from C1 contains
                                 from C3
 
-Prepro
+Preprocessor
+===========
+
+for each row, column and box:
+    for the number of cells:
+        for each cell, C1:
+            for each other cell, C2:
+                remove the set of values from the entire row, column or box
+                
+            
+HiddenSingles
+=============
+
+for each row, column and box:
+    C = list of cells in row, column or group
+    for each cell, C1, in C:
+        if C1 does not have a solved digit:
+            otherCells = copy of C
+            remove C1 from otherCells
+
+            arraySet = the set of possible values from otherCells
+            cellSet = the set of possible values in C1 
+            diff = new set
+
+            add all values from cellSet to diff
+            remove all values contained within arraySet from diff
+
+            if the number of values in diff is 1:
+                if C1 does not have a solved value:
+                    value of C1 is set to the only value in diff
+
+
