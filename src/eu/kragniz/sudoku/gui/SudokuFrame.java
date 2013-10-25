@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class SudokuFrame extends JFrame {
     public SudokuFrame(Sudoku sudoku) throws HeadlessException {
-        super("Sudoku solver");
+        super("Sudoku solver - " + sudoku.getName());
         SudokuPanel panel = new SudokuPanel(sudoku);
         setContentPane(panel);
         setSize(500, 500);

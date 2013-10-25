@@ -17,6 +17,8 @@ public class Sudoku {
     private List<Cell>[] boxes;
     private List<Cell>[] groups;
 
+    private String name = "";
+
     public Sudoku() {
         grid = new Cell[9][9];
     }
@@ -138,6 +140,14 @@ public class Sudoku {
 
     public List[] getGroups() {
         return groups;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String toString() {
